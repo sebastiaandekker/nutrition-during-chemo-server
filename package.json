@@ -1,0 +1,18 @@
+{
+  "name": "nutrition-during-chemo-server",
+  "version": "0.1",
+  "description": "Webserver for 'Nutrition During Chemo' app",
+  "main": "index.js",
+  "repository": "https://github.com/sebastiaandekker/nutrition-during-chemo-server",
+  "author": "Sebastiaan Dekker",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.18.2",
+    "sequelize": "^5.21.5"
+  }
+}
