@@ -3,6 +3,7 @@ const db = require("./db");
 const User = require("./user/model");
 const userRouter = require("./user/router");
 const MedicalInformation = require("./medical-information/model");
+const medicalInformationRouter = require("./medical-information/router");
 const cors = require("cors");
 
 const app = new express();
@@ -12,6 +13,7 @@ const jsonParser = express.json();
 app.use(corsMiddleware);
 app.use(jsonParser);
 app.use(userRouter);
+app.use(medicalInformationRouter);
 
 const port = process.env.PORT || 4000;
 
