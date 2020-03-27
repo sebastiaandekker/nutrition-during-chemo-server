@@ -20,17 +20,17 @@ router.post("/user", (req, res, next) => {
     .catch(next);
 });
 
-// Get users information
-// router.get("/user/:userId", (req, res, next) => {
-//   User.findByPk(req.params.userId, { include: [Event, Ticket] })
-//     .then(user => {
-//       if (!user) {
-//         res.status(404).end();
-//       } else {
-//         res.json(user);
-//       }
-//     })
-//     .catch(next);
-// });
+// Get specific user information
+router.get("/user/:userId", (req, res, next) => {
+  User.findByPk(req.params.userId)
+    .then(user => {
+      if (!user) {
+        res.status(404).end();
+      } else {
+        res.json(user);
+      }
+    })
+    .catch(next);
+});
 
 module.exports = router;
