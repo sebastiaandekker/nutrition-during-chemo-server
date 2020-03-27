@@ -1,8 +1,16 @@
 const express = require("express");
 const db = require("./db");
 const User = require("./user/model");
+const userRouter = require("./user/router");
+const cors = require("cors");
 
 const app = new express();
+const corsMiddleware = cors();
+const jsonParser = express.json();
+
+app.use(corsMiddleware);
+app.use(jsonParser);
+app.use(userRouter);
 
 const port = process.env.PORT || 4000;
 
