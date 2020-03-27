@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("./db");
 const User = require("./user/model");
 const userRouter = require("./user/router");
+const MedicalInformation = require("./medical-information/model");
 const cors = require("cors");
 
 const app = new express();
