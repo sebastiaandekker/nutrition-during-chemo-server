@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const User = require("./model");
+const MedicalInformation = require("../medical-information/model");
 // const bcrypt = require("bcrypt");
 // const auth = require("../auth/middleware");
 // const { toJWT } = require("../auth/jwt");
@@ -22,7 +23,7 @@ router.post("/user", (req, res, next) => {
 
 // Get specific user information
 router.get("/user/:userId", (req, res, next) => {
-  User.findByPk(req.params.userId)
+  User.findByPk(req.params.userId, { include: [MedicalInformation] })
     .then(user => {
       if (!user) {
         res.status(404).end();
