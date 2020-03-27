@@ -28,14 +28,14 @@ const User = db.define("user", {
     allowNull: false
   },
   accountType: {
-    type: DataTypes.STRING,
-    allowNull: false
+    type: DataTypes.STRING
   },
   privacy: {
     type: DataTypes.INTEGER
   },
   expert: {
-    type: DataTypes.BOOLEAN
+    type: DataTypes.BOOLEAN,
+    allowNull: false
   }
 });
 
