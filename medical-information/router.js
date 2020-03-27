@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const MedicalInformation = require("/model");
+const MedicalInformation = require("./model");
 // const User = require("./model");
 // const bcrypt = require("bcrypt");
 // const auth = require("../auth/middleware");
