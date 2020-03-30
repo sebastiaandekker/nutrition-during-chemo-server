@@ -5,6 +5,7 @@ const userRouter = require("./user/router");
 const MedicalInformation = require("./medical-information/model");
 const medicalInformationRouter = require("./medical-information/router");
 const Allergy = require("./allergy/model");
+const allergyRouter = require("./allergy/router");
 const cors = require("cors");
 
 const app = new express();
@@ -15,6 +16,7 @@ app.use(corsMiddleware);
 app.use(jsonParser);
 app.use(userRouter);
 app.use(medicalInformationRouter);
+app.use(allergyRouter);
 
 const port = process.env.PORT || 4000;
 
