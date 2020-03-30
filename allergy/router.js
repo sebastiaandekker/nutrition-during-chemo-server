@@ -1,8 +1,5 @@
 const { Router } = require("express");
 const Allergy = require("./model");
-// const User = require("./model");
-// const auth = require("../auth/middleware");
-// const { toJWT } = require("../auth/jwt");
 
 const router = new Router();
 
