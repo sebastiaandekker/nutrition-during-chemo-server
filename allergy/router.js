@@ -6,7 +6,6 @@ const Allergy = require("./model");
 
 const router = new Router();
 
-// Create medical information
 router.post("/allergy", (req, res, next) => {
   Allergy.create(req.body)
     .then(allergy => {
