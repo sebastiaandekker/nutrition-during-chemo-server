@@ -6,6 +6,7 @@ const MedicalInformation = require("./medical-information/model");
 const medicalInformationRouter = require("./medical-information/router");
 const Allergy = require("./allergy/model");
 const allergyRouter = require("./allergy/router");
+const UserAllergy = require("./user-allergy/model");
 const cors = require("cors");
 
 const app = new express();
