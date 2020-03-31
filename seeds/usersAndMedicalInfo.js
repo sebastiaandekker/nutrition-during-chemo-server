@@ -1,7 +1,9 @@
 const User = require("../User/model");
 const MedicalInformation = require("../medical-information/model");
+const Allergy = require("../allergy/model");
 
 async function seedUsersAndMedicalInformation() {
+  // User seeds
   const sebastiaan = await User.create({
     firstName: "Sebastiaan",
     lastName: "Dekker",
@@ -38,6 +40,7 @@ async function seedUsersAndMedicalInformation() {
     expert: false
   });
 
+  // MedicalInformation seeds
   const sebastiaanMedicInfo = await MedicalInformation.create({
     userId: 1,
     medication:
@@ -63,6 +66,31 @@ async function seedUsersAndMedicalInformation() {
     medicationHistory:
       "Zij heeft nooit andere medicatie in continuiteit geslikt.",
     treatment: "Lichte chemo voor uitroeien van kankercellen."
+  });
+
+  // Allergy seeds
+  const soja = await Allergy.create({
+    name: "Soja",
+    description:
+      "Soja behoort tot de peulvruchten en is een van de belangrijkste voedselallergenen."
+  });
+
+  const zuivel = await Allergy.create({
+    name: "Zuivel",
+    description:
+      "Als je lijf allergisch reageert op het eiwit in koemelk, dan heb je een koemelkeiwitallergie."
+  });
+
+  const gluten = await Allergy.create({
+    name: "Gluten",
+    description:
+      "Overgevoeligheid voor gluten (coeliakie) is eigenlijk geen allergie. Coeliakie is een auto-immuunziekte."
+  });
+
+  const noten = await Allergy.create({
+    name: "Noten",
+    description:
+      "Wie een notenallergie heeft reageert vaak op meerdere soorten noten."
   });
 }
 
