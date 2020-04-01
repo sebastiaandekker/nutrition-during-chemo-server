@@ -3,7 +3,7 @@ const db = require("../db");
 const User = require("../user/model");
 const UserAllergy = require("../user-allergy/model");
 
-const Allergy = db.define("allergy", {
+const Allergy = db.define("Allergy", {
   name: {
     type: DataTypes.TEXT,
     allowNull: false

@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const db = require("../db");
 const User = require("../user/model");
 
-const MedicalInformation = db.define("medical-information", {
+const MedicalInformation = db.define("MedicalInformation", {
   medication: {
     type: DataTypes.TEXT
   },
