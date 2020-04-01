@@ -15,5 +15,9 @@ const Allergy = db.define("allergy", {
 
 User.belongsToMany(Allergy, { through: UserAllergy });
 Allergy.belongsToMany(User, { through: UserAllergy });
+User.hasMany(UserAllergy);
+UserAllergy.belongsTo(User);
+Allergy.hasMany(UserAllergy);
+UserAllergy.belongsTo(Allergy);
 
 module.exports = Allergy;
