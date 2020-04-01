@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-const UserAllergy = db.define(
-  "UserAllergy",
+const UserCancerType = db.define(
+  "UserCancerType",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,4 +14,4 @@ const UserAllergy = db.define(
   { timestamps: false }
 );
 
-module.exports = UserAllergy;
+module.exports = UserCancerType;
