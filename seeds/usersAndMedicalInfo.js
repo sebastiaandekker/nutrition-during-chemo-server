@@ -2,6 +2,8 @@ const User = require("../user/model");
 const Allergy = require("../allergy/model");
 const MedicalInformation = require("../medical-information/model");
 const UserAllergy = require("../user-allergy/model");
+const CancerType = require("../cancer-type/model");
+const UserCancerType = require("../user-cancer-type/model");
 
 async function seedUsersAndMedicalInformation() {
   // User seeds
@@ -43,7 +45,7 @@ async function seedUsersAndMedicalInformation() {
 
   // MedicalInformation seeds
   const sebastiaanMedicInfo = await MedicalInformation.create({
-    userId: 1,
+    UserId: 1,
     medication:
       "Ik slik kruidensupplementen tegen migraine, extra B-vitamines en ijzer.",
     medicationHistory:
@@ -52,7 +54,7 @@ async function seedUsersAndMedicalInformation() {
   });
 
   const olgaMedicInfo = await MedicalInformation.create({
-    userId: 2,
+    UserId: 2,
     medication:
       "Mijn partner slikt kruidensupplementen om immuunsysteem te boosten.",
     medicationHistory:
@@ -61,7 +63,7 @@ async function seedUsersAndMedicalInformation() {
   });
 
   const karinMedicInfo = await MedicalInformation.create({
-    userId: 3,
+    UserId: 3,
     medication:
       "Mijn moeder slikt kruidensupplementen om immuunsysteem te boosten.",
     medicationHistory:
@@ -94,7 +96,7 @@ async function seedUsersAndMedicalInformation() {
       "Wie een notenallergie heeft reageert vaak op meerdere soorten noten."
   });
 
-  // Many to many seeds
+  // UserAllergy many to many seeds
   await soja.addUser(sebastiaan, {});
   await zuivel.addUser(sebastiaan, {});
   await gluten.addUser(sebastiaan, {});
@@ -104,6 +106,39 @@ async function seedUsersAndMedicalInformation() {
   await olga.addAllergy(zuivel, {});
   await olga.addAllergy(gluten, {});
   await olga.addAllergy(noten, {});
+
+  // CancerType seeds
+  const long = await CancerType.create({
+    name: "Longkanker",
+    description: "Omschrijving over longkanker gebaseerd op kennis van experts."
+  });
+
+  const nier = await CancerType.create({
+    name: "Nierkanker",
+    description: "Omschrijving over nierkanker gebaseerd op kennis van experts."
+  });
+
+  const borst = await CancerType.create({
+    name: "Borstkanker",
+    description:
+      "Omschrijving over borstkanker gebaseerd op kennis van experts."
+  });
+
+  const darm = await CancerType.create({
+    name: "Darmkanker",
+    description: "Omschrijving over darmkanker gebaseerd op kennis van experts."
+  });
+
+  // UserCanerType many to many seeds
+  await long.addUser(sebastiaan, {});
+  await nier.addUser(sebastiaan, {});
+  await borst.addUser(sebastiaan, {});
+  await darm.addUser(sebastiaan, {});
+
+  await olga.addCancerType(long, {});
+  await olga.addCancerType(nier, {});
+  await olga.addCancerType(borst, {});
+  await olga.addCancerType(darm, {});
 }
 
 seedUsersAndMedicalInformation();
