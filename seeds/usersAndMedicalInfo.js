@@ -94,37 +94,16 @@ async function seedUsersAndMedicalInformation() {
       "Wie een notenallergie heeft reageert vaak op meerdere soorten noten."
   });
 
-  UserAllergy.create({
-    userId: sebastiaan.id,
-    allergyId: soja.id,
-    selfGranted: false
-  });
+  // Many to many seeds
+  await soja.addUser(sebastiaan, {});
+  await zuivel.addUser(sebastiaan, {});
+  await gluten.addUser(sebastiaan, {});
+  await noten.addUser(sebastiaan, {});
 
-  UserAllergy.create({
-    userId: sebastiaan.id,
-    allergyId: zuivel.id,
-    selfGranted: false
-  });
-  UserAllergy.create({
-    userId: sebastiaan.id,
-    allergyId: gluten.id,
-    selfGranted: false
-  });
-  UserAllergy.create({
-    userId: sebastiaan.id,
-    allergyId: noten.id,
-    selfGranted: false
-  });
-
-  // WIP, doesn't work yet
-  // soja.addUser(sebastiaan, { through: { selfGranted: false } });
-  // console.log("soja");
-  // zuivel.addUser(sebastiaan, { through: { selfGranted: false } });
-  // console.log("zuivel");
-  // gluten.addUser(sebastiaan, { through: { selfGranted: false } });
-  // console.log("gluten");
-  // noten.addUser(sebastiaan, { through: { selfGranted: false } });
-  // console.log("noten");
+  await olga.addAllergy(soja, {});
+  await olga.addAllergy(zuivel, {});
+  await olga.addAllergy(gluten, {});
+  await olga.addAllergy(noten, {});
 }
 
 seedUsersAndMedicalInformation();
