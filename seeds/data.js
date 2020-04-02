@@ -222,8 +222,15 @@ async function seedUsersAndMedicalInformation() {
 
   await olga.addRecipe(meloenSalade, {});
   await olga.addRecipe(fetaSalade, {});
-  // await olga.addCancerType(borst, {});
-  // await olga.addCancerType(darm, {});
+
+  // AllergyRecipe many to many seeds
+  await soja.addRecipe(meloenSalade, {});
+  await zuivel.addRecipe(meloenSalade, {});
+  await gluten.addRecipe(meloenSalade, {});
+  await noten.addRecipe(meloenSalade, {});
+
+  await fetaSalade.addAllergy(soja, {});
+  await fetaSalade.addAllergy(zuivel, {});
 }
 
 seedUsersAndMedicalInformation();
