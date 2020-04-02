@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
+const User = require("../user/model");
+const FavoriteRecipe = require("../favorite-recipe/model");
 
 const Recipe = db.define("Recipe", {
   picture: {
@@ -67,5 +69,12 @@ const Recipe = db.define("Recipe", {
     allowNull: false
   }
 });
+
+User.belongsToMany(Recipe, { through: FavoriteRecipe });
+Recipe.belongsToMany(User, { through: FavoriteRecipe });
+User.hasMany(FavoriteRecipe);
+Recipe.hasMany(FavoriteRecipe);
+FavoriteRecipe.belongsTo(User);
+FavoriteRecipe.belongsTo(Recipe);
 
 module.exports = Recipe;
