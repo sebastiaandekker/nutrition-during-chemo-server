@@ -10,6 +10,7 @@ const UserAllergy = require("./user-allergy/model");
 const CancerType = require("./cancer-type/model");
 // const allergyRouter = require("./allergy/router");
 const UserCancerType = require("./user-cancer-type/model");
+const Recipe = require("./recipe/model");
 const cors = require("cors");
 
 const app = new express();
