@@ -142,7 +142,7 @@ async function seedUsersAndMedicalInformation() {
   await olga.addCancerType(darm, {});
 
   // Recipe seeds
-  const meloenFeta = await Recipe.create({
+  const meloenSalade = await Recipe.create({
     picture:
       "http://2.bp.blogspot.com/-p396IHk15h8/VWyQ-YDHxDI/AAAAAAAACUI/F-MAso9ANjw/s1600/watermeloen%2Bsalade.jpg",
     title: "Meloen Feta Salade",
@@ -217,13 +217,11 @@ async function seedUsersAndMedicalInformation() {
   });
 
   // UserRecipe many to many seeds
-  // await long.addUser(sebastiaan, {});
-  // await nier.addUser(sebastiaan, {});
-  // await borst.addUser(sebastiaan, {});
-  // await darm.addUser(sebastiaan, {});
+  await meloenSalade.addUser(sebastiaan, {});
+  await fetaSalade.addUser(sebastiaan, {});
 
-  // await olga.addCancerType(long, {});
-  // await olga.addCancerType(nier, {});
+  await olga.addRecipe(meloenSalade, {});
+  await olga.addRecipe(fetaSalade, {});
   // await olga.addCancerType(borst, {});
   // await olga.addCancerType(darm, {});
 }
