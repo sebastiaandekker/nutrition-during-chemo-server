@@ -6,12 +6,12 @@ const MedicalInformation = require("./medical-information/model");
 const medicalInformationRouter = require("./medical-information/router");
 const Allergy = require("./allergy/model");
 const allergyRouter = require("./allergy/router");
-const UserAllergy = require("./user-allergy/model");
 const CancerType = require("./cancer-type/model");
 const cancerTypeRouter = require("./cancer-type/router");
-const UserCancerType = require("./user-cancer-type/model");
 const Recipe = require("./recipe/model");
 const recipeRouter = require("./recipe/router");
+const Tip = require("./Tip/model");
+const tipRouter = require("./Tip/router");
 const cors = require("cors");
 
 const app = new express();
@@ -23,6 +23,10 @@ app.use(jsonParser);
 app.use(userRouter);
 app.use(medicalInformationRouter);
 app.use(allergyRouter);
+app.use(cancerTypeRouter);
+app.use(recipeRouter);
+app.use(allergyRouter);
+app.use(tipRouter);
 
 const port = process.env.PORT || 4000;
 
