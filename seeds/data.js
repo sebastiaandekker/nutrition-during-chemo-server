@@ -1,10 +1,9 @@
 const User = require("../user/model");
 const Allergy = require("../allergy/model");
 const MedicalInformation = require("../medical-information/model");
-const UserAllergy = require("../user-allergy/model");
 const CancerType = require("../cancer-type/model");
-const UserCancerType = require("../user-cancer-type/model");
 const Recipe = require("../recipe/model");
+const Tip = require("../tip/model");
 
 async function seedUsersAndMedicalInformation() {
   // User seeds
@@ -201,7 +200,7 @@ async function seedUsersAndMedicalInformation() {
       "Meng de feta en lente-uidressing met de meloen. Zet de meloenschipartjes op kleine bortjes en verdeel de meloenselade erover."
     ],
     recipeTip:
-      "e kunt deze meloensalade minstens een dag in de koelkast bewaren. Dus geen probleem als er wat overblijft.",
+      "Je kunt deze meloensalade minstens een dag in de koelkast bewaren. Dus geen probleem als er wat overblijft.",
     cookingTime: 15,
     calories: 168,
     proteine: 12,
@@ -232,7 +231,7 @@ async function seedUsersAndMedicalInformation() {
   await fetaSalade.addAllergy(soja, {});
   await fetaSalade.addAllergy(zuivel, {});
 
-  // AllergyRecipe many to many seeds
+  // CancerTypeRecipe many to many seeds
   await long.addRecipe(meloenSalade, {});
   await nier.addRecipe(meloenSalade, {});
   await borst.addRecipe(meloenSalade, {});
@@ -240,6 +239,33 @@ async function seedUsersAndMedicalInformation() {
 
   await fetaSalade.addCancerType(long, {});
   await fetaSalade.addCancerType(nier, {});
+
+  const tip1 = await Tip.create({
+    title: "Maak gebruik van ieder moment",
+    description:
+      "Wel of geen trek hebben, kan heel snel veranderen. Dus: maak gebruik van ieder moment dat je kunt en wilt eten. Al is het midden in de nacht!",
+    sources: ["https://nutritionfacts.org/", "https://nutritionfacts.org/"],
+    categories: ["Aankomen", "Eten en drinken", "Tijdens en na de behandeling"]
+  });
+  const tip2 = await Tip.create({
+    title: "Deel waar je trek in hebt",
+    description:
+      "Je smaakpupillen kunnen per dag verschillende signalen afgeven. Deel met de mensen om je heen waar je trek in hebt en ga ervoor.",
+    sources: ["https://nutritionfacts.org/", "https://nutritionfacts.org/"],
+    categories: [
+      "Aankomen",
+      "Eten en drinken",
+      "Tijdens en na de behandeling",
+      "Communicatie"
+    ]
+  });
+
+  // FavoriteTip many to many seeds
+  await tip1.addUser(sebastiaan, {});
+  await tip2.addUser(sebastiaan, {});
+
+  await olga.addTip(tip1, {});
+  await olga.addTip(tip2, {});
 }
 
 seedUsersAndMedicalInformation();
