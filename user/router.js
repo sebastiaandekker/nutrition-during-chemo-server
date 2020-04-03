@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const User = require("./model");
-const MedicalInformation = require("../medical-information/model");
+const MedicalInformation = require("../MedicalInformation/model");
 // const bcrypt = require("bcrypt");
 // const auth = require("../auth/middleware");
 // const { toJWT } = require("../auth/jwt");

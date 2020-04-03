@@ -1,8 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
-const User = require("../user/model");
-const UserAllergy = require("../user-allergy/model");
-const Recipe = require("../recipe/model");
+const User = require("../User/model");
+const UserAllergy = require("../UserAllergy/model");
+const Recipe = require("../Recipe/model");
 const AllergyRecipe = require("../AllergyRecipe/model");
 
 const Allergy = db.define("Allergy", {
